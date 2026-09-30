@@ -1,0 +1,111 @@
+:root {
+  --bg: #eceff2;
+  --card: #ffffff;
+  --ink: #1f2430;
+  --muted: #5d6675;
+  --line: #d3d9e0;
+  --accent: #0f6b6b; 
+  --accent-ink: #ffffff;
+  --new: #2f5fd0;
+  --progress: #b9770e;
+  --ready: #0f6b6b;
+  --done: #5d6675;
+  --gap: 1rem;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Bricolage Grotesque", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.5;
+}
+.top {
+  background: var(--ink);
+  color: #fff;
+  padding: 2rem 1.25rem 1.75rem;
+  text-align: center;
+}
+.top h1 { margin: 0; font-size: clamp(1.75rem, 6vw, 2.75rem); font-weight: 800; letter-spacing: -0.02em; }
+.top p { margin: .25rem 0 0; color: #b8c0cc; }
+
+.wrap { max-width: 760px; margin: 0 auto; padding: 1.25rem 1rem 3rem; }
+
+fieldset {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  margin: 0 0 1.25rem;
+  padding: 1.25rem 1.25rem 1.5rem;
+  min-width: 0;
+}
+legend { font-weight: 800; font-size: 1.1rem; padding: 0 .5rem; }
+
+.grid { display: grid; grid-template-columns: 1fr; gap: var(--gap); }
+label { display: flex; flex-direction: column; gap: .35rem; font-size: .9rem; font-weight: 600; color: var(--muted); }
+input, textarea, select {
+  font: inherit; color: var(--ink);
+  width: 100%;
+  padding: .7rem .8rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fbfcfd;
+  font-weight: 400;
+}
+input:focus, textarea:focus, select:focus, button:focus-visible {
+  outline: 3px solid rgba(15,107,107,.35);
+  outline-offset: 1px;
+  border-color: var(--accent);
+}
+input.invalid { border-color: #c0392b; background: #fff5f4; }
+textarea { resize: vertical; }
+
+@media (min-width: 600px) {
+  .grid { grid-template-columns: 1fr 1fr; }
+  .full { grid-column: 1 / -1; }
+  fieldset { padding: 1.5rem 1.75rem 1.75rem; }
+}
+
+.actions { display: flex; flex-wrap: wrap; gap: .75rem; }
+button {
+  font: inherit; font-weight: 600; cursor: pointer;
+  padding: .8rem 1.4rem; border-radius: 8px; border: 1px solid var(--accent);
+  background: var(--accent); color: var(--accent-ink);
+}
+button:hover { filter: brightness(1.1); }
+button:disabled { opacity: .6; cursor: wait; }
+button.ghost { background: transparent; color: var(--accent); }
+@media (max-width: 479px) { .actions button { flex: 1 1 100%; } }
+
+#msg { min-height: 1.5rem; margin: .75rem 0 0; font-size: .95rem; }
+#msg.ok { color: var(--ready); }
+#msg.warn { color: var(--progress); }
+#msg.err { color: #c0392b; }
+
+.orders { margin-top: 2rem; }
+.orders-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .75rem; margin-bottom: 1rem; }
+.orders h2 { margin: 0; font-size: 1.35rem; }
+.orders h2 span { font-size: .9rem; background: var(--ink); color: #fff; border-radius: 999px; padding: .1rem .6rem; margin-left: .35rem; vertical-align: middle; }
+
+#orderList { list-style: none; margin: 0; padding: 0; display: grid; gap: .75rem; }
+#orderList li {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .75rem;
+  background: var(--card); border: 1px solid var(--line); border-left-width: 6px;
+  border-radius: 10px; padding: .9rem 1rem;
+}
+#orderList li[data-status="New"] { border-left-color: var(--new); }
+#orderList li[data-status="In progress"] { border-left-color: var(--progress); }
+#orderList li[data-status="Ready"] { border-left-color: var(--ready); }
+#orderList li[data-status="Done"] { border-left-color: var(--done); opacity: .8; }
+.info { flex: 1 1 200px; min-width: 0; }
+.info strong { display: block; overflow-wrap: anywhere; }
+.info span { color: var(--muted); overflow-wrap: anywhere; }
+.row-tools { display: flex; gap: .5rem; align-items: center; }
+.row-tools select { width: auto; min-width: 8.5rem; padding: .5rem .6rem; }
+.row-tools .del { padding: .45rem .7rem; background: transparent; color: #c0392b; border-color: var(--line); }
+.empty { color: var(--muted); text-align: center; padding: 1.5rem 0; }
+@media (max-width: 479px) {
+  .row-tools { width: 100%; }
+  .row-tools select { flex: 1; }
+}

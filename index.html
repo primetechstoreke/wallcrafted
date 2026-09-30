@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WallCrafted Order Log</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head> 
+<body>
+  <header class="top">
+    <h1>WallCrafted Order Log</h1>
+    <p>custom wall art &amp; DIY orders</p>
+  </header>
+
+  <main class="wrap">
+    <form id="orderForm" novalidate>
+      <fieldset>
+        <legend>Customer information</legend>
+        <div class="grid">
+          <label class="full">Name *<input name="name" required autocomplete="off"></label>
+          <label>Phone<input name="phone" type="tel"></label>
+          <label>Email<input name="email" type="email"></label>
+          <label>Order date<input name="orderDate" type="date"></label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Order details</legend>
+        <div class="grid">
+          <label class="full">Design / item *<input name="design" required></label>
+          <label class="full">Personalization text (e.g. name, date)<input name="personalization"></label>
+          <label>Size / dimensions<input name="size"></label>
+          <label>Quantity<input name="quantity" type="number" min="1" value="1"></label>
+          <label>Color / style options<input name="colorStyle"></label>
+          <label>Base type (if applicable)<input name="baseType"></label>
+          <label class="full">Special instructions<textarea name="instructions" rows="3"></textarea></label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Payment &amp; pickup</legend>
+        <div class="grid">
+          <label>Price<input name="price" inputmode="decimal"></label>
+          <label>Deposit paid<input name="deposit" inputmode="decimal"></label>
+          <label>Payment method<input name="paymentMethod"></label>
+          <label>Est. completion date<input name="completionDate" type="date"></label>
+          <label class="full">Pickup / shipping<input name="pickup"></label>
+        </div>
+      </fieldset>
+
+      <div class="actions">
+        <button type="submit" id="saveBtn">Save order</button>
+        <button type="reset" class="ghost">Clear form</button>
+      </div>
+      <p id="msg" role="status" aria-live="polite"></p>
+    </form>
+
+    <section class="orders">
+      <div class="orders-head">
+        <h2>Saved orders <span id="count">0</span></h2>
+        <button type="button" id="exportBtn" class="ghost">Export to Excel</button>
+      </div>
+      <ul id="orderList"></ul>
+    </section>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
