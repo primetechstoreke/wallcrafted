@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  var EMAIL = "easlum97@gmail.com";
+  var EMAIL = "wallcrafted24@gmail.com";
   // Paste your Web3Forms access key here (get it free at https://web3forms.com)
   var ACCESS_KEY = "1b837676-7676-4ada-8465-3c865a055b20";
     var KEY = "wallcrafted_orders"; 
